@@ -2,6 +2,7 @@
 """
 This module provides a function to divide all elements of a matrix by a number.
 """
+import math
 
 
 def matrix_divided(matrix, div):
@@ -35,6 +36,12 @@ def matrix_divided(matrix, div):
 
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
+
+    if math.isnan(div):
+        raise ValueError("cannot divide by NaN")
+    if math.isinf(div):
+        # if div is infinity, all results will be 0.0 (number / inf == 0.0)
+        return [[0.0 for _ in row] for row in matrix]
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
