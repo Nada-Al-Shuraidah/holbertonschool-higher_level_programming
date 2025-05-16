@@ -21,7 +21,7 @@ def matrix_divided(matrix, div):
         TypeError: If div is not a number.
         ZeroDivisionError: If div is zero.
     """
-     if not type(div) in (int, float):
+    if not type(div) in (int, float):
         raise TypeError("div must be a number")
 
     if div == 0:
