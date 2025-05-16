@@ -2,7 +2,6 @@
 """
 This module provides a function to divide all elements of a matrix by a number.
 """
-import math
 
 
 def matrix_divided(matrix, div):
