@@ -1,18 +1,29 @@
 #!/usr/bin/python3
-"""Module that defines a Student class with optional attribute filtering."""
+"""Defines a class Student with selective dictionary representation."""
 
 
 class Student:
-    """Defines a student with first name, last name, and age."""
+    """Represents a student with basic identifying information."""
 
     def __init__(self, first_name, last_name, age):
+        """Initialize a Student instance.
+
+        Args:
+            first_name (str): The student's first name.
+            last_name (str): The student's last name.
+            age (int): The student's age.
+        """
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """Returns a dictionary representation of the Student instance.
-        If attrs is a list of strings, only return those attributes."""
-        if type(attrs) == list and all(type(attr) == str for attr in attrs):
-            return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
+        """Return a dictionary representation of the Student.
+
+        If `attrs` is a list of strings, return only those attributes.
+        Otherwise, return all attributes.
+        """
+        if (isinstance(attrs, list) and
+                all(isinstance(attr, str) for attr in attrs)):
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
         return self.__dict__
