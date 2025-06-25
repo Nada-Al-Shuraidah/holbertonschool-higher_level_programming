@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """
 Lists all states from the database hbtn_0e_0_usa where name matches the argument
-Usage: ./2-my_filter_states.py <mysql username> <mysql password> <database name> <state name>
-Results sorted by states.id ascending
 """
 
 import sys
@@ -19,7 +17,7 @@ if __name__ == "__main__":
                          charset="utf8")
 
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name.replace("'", "''"))
     cursor.execute(query)
 
     for row in cursor.fetchall():
