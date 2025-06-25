@@ -18,7 +18,7 @@ if __name__ == "__main__":
                          charset="utf8")
 
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+    query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
     cursor.execute(query)
 
     for row in cursor.fetchall():
