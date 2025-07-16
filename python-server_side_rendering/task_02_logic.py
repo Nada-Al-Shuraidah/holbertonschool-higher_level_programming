@@ -16,3 +16,6 @@ def items():
         print(f"Error reading items.json: {e}")
 
     return render_template('items.html', items=items_list)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
